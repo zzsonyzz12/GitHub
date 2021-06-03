@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        #big{
+            width: 600px;
+            height: 300px;
+            border: 1px solid purple;
+            margin: 300px auto;
+            /* overflow: hidden; */
+            position: relative;
+        }
+        #ul{
+            height: 110px;
+            /* width: 1000000px; */
+
+            background-color: red;
+            position: absolute;
+            /* left: -1000px; */
+        }
+        #ul li{
+            width:400px;
+            /* position: absolute; */
+            float: left;
+            
+        }
+        #ul li a img{
+           width: 100%;
+            /* float: left; */
+            /* position: absolute; */
+        }
+        #pre{
+            width: 100%;
+            height: 40px;
+            background-color: #cccc;
+            position: absolute;
+            bottom: 20px;
+
+        }
+        .bg{
+            width: 0%;
+            height: 100%;
+            background-color:orangered ;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+
+        }
+        #span{
+            height: 50px;
+            /* width: 10px; */
+            background-color: orangered ;
+            position: absolute;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="big">
+    <ul id="ul">
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="../img/1.jpg" alt=""></a></li>
+    </ul>
+    <div id="pre">
+        <div class="bg"></div>
+        <span id="span"></span>
+    </div>
+</div>
+
+<script>
+    
+    var big = document.getElementById("big");
+    var ul = document.getElementById("ul");
+    var lis = ul.getElementsByTagName("li");
+    var span = document.getElementById("span");
+    var bg = document.getElementsByClassName("bg")[0];
+    var pre = document.getElementById("pre");
+    
+    span.style.top = (pre.offsetHeight-span.offsetHeight)/2 + "px";
+    //图片总长度
+    var lw = lis[0].offsetWidth*lis.length;
+    ul.style.width = lw + "px";
+    //span的宽度
+    var sw = big.offsetWidth*big.offsetWidth/lw;
+    
+    span.style.width = sw + "px";
+
+    pre.onmousemove = function(e){
+        var x = e.clientX;
+        var y = e.clientY;
+        var px = x-big.offsetLeft - span.offsetWidth/2;
+
+        if (px<0){
+            px = 0;
+        }else if (px >(big.offsetWidth - span.offsetWidth)){
+            px = big.offsetWidth-span.offsetWidth;
+        }
+        span.style.left = px + "px";
+        
+        var pp =px/(big.offsetWidth-span.offsetWidth);
+        // console.log(pp);
+        // ul.style.left = -1000 + "px";
+        // ul.style.left = -parseInt (lw*(pp/100)) + "px";
+        var sp = pp*lw;
+        if (sp>lw-big.offsetWidth){
+            sp = lw-big.offsetWidth;
+        }
+        console.log(pp  ,    sp);
+        
+        ul.style.left = -(sp) + "px";
+        // ul.style.left = -lw*pp-big.offsetWidth + "px";
+    };
+    
+    
+    
+    
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        .box {
+            width: 400px;
+            background-color: #bfa;
+            border: 2px purple solid;
+            margin: 50px auto;
+            /* box-sizing: border-box; */
+        }
+
+        #top {
+            position: relative;
+            background-color: red;
+        }
+
+        #pl {
+            width: 100%;
+            /* border: ; */
+            padding: 0;
+            border-right: none;
+            border-left: none;
+        }
+
+        #btn {
+            margin-left: 100%;
+            width: 50px;
+            transform: translateX(-100%);
+        }
+
+        #ul {
+            position: relative;
+        }
+
+        #ul li {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px auto;
+            border-bottom: 1px purple dashed;
+            align-items: center;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <div id="top">
+            <table class="table">请输入需要评论的内容: </table>
+            <textarea name="pl" id="pl" cols="30" rows="10">请输入需要评论的内容O</textarea>
+            <button id="btn">提交</button>
+        </div>
+        <ul id="ul">
+            <li>
+                <span>这是一些评论</span>
+                <button>删除</button>
+            </li>
+            <li>
+                <span>这是一些评论</span>
+                <button>删除</button>
+            </li>
+            <li>
+                <span>这是一些评论</span>
+                <button>删除</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var btn = document.getElementById("btn");
+        var box = document.getElementById("box");
+        var top = document.getElementById("top");
+        var pl = document.getElementById("pl");
+        var ul = document.getElementById("ul");
+        var li = ul.getElementsByTagName("li");
+        console.log(top);
+        
+        for (var i = 0; i < li.length; i++) {
+            li[i].onclick = function () {
+                this.parentNode.parentNode.removeChild(this.parentNode);
+            }
+        }
+        // var uspan = ul.getElementsByTagName("span");
+        // console.log(pl.value);
+        // var a  = pl.value;
+        btn.onclick = function () {
+            // 创建一个li 
+            var li = document.createElement("li");
+            var spannew = document.createElement("span");
+            var buttonnew = document.createElement("button");
+            ul.append(li);
+            li.append(spannew);
+            li.append(buttonnew);
+            spannew.innerText = pl.value;
+            buttonnew.innerText = "删除";
+            var lis = ul.getElementsByTagName("li");
+            //  console.log(lis.length);
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].getElementsByTagName("button")[0].onclick = function () {
+                    //  this.parentNode.removeChild(this.parentNode);
+                    console.log(this);
+                    console.log(i);
+
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+
+                    console.log(this.parentNode);
+
+                };
+
+            }
+
+        };
+        pl.onfocus = function () {
+            pl.value = "";
+        };
+    </script>
+</body>
+</html>

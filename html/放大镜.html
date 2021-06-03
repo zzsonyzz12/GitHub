@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        #box{
+            width: 800px;
+            height: 800px;
+            position: relative;
+            margin: 100px;
+            background-color: #bfa;
+        }
+        .s{
+            width: 100px;
+            height: 100px;
+            background-color:purple ;
+            display: none;
+            position: absolute;
+            cursor: move;
+
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+     <span class="s"></span>
+</div>
+
+<script>
+    var box = document.getElementById("box");
+    var span = document.getElementsByClassName("s")[0];
+
+    box.onmousemove = function(e){
+    //    console.log("ssss");
+        // console.log(span);
+        span.style.display = "block";
+        var cx = e.clientX;
+        var cy = e.clientY;
+
+        // span.style.left = (cx - box.offsetLeft- span.offsetWidth/2 ) + "px";
+        var px = cx - box.offsetLeft-span.offsetWidth/2 ;
+        // span.style.top = (cy - box.offsetTop - span.offsetHeight/2 ) + "px";
+        var py = cy - box.offsetTop-span.offsetHeight/2;
+        
+        span.innerText = "X 坐标: "+ px +", Y 坐标: " + py ;
+       
+        if (px<0){
+            px = 0;
+
+        }else if (px> box.offsetWidth-span.offsetWidth){
+            px = box.offsetWidth-span.offsetWidth;
+        }
+        span.style.left = px  + "px";
+
+        if (py < 0 ){
+            py = 0;
+        }
+        else if (py >box.offsetHeight- span.offsetHeight){
+            py = box.offsetHeight - span.offsetHeight;
+        }
+        span.style.top  = py  + "px";
+    };
+    
+    
+    
+</script>
+</body>
+</html>

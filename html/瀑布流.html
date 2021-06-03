@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <!-- <script src="../js/UnderScore.js"></script> -->
+    <script src="../js/Underscore-min.js"></script>
+    <style>
+        #box {
+            position: relative;
+            background-color: #bfa;
+        }
+
+        #box div {
+            float: left;
+            /* position: absolute; */
+            /* background-color: #bfa; */
+        }
+
+        #box div img {
+            width: 200px;
+            padding: 10px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">
+        <div class="img"><img src="../img/1/img01.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img02.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img03.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img04.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img05.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img06.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img07.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img08.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img09.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img10.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img11.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img12.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img13.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img14.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img15.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img16.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img17.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img18.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img19.jpg" alt=""> </div>
+        <div class="img"><img src="../img/1/img20.jpg" alt=""> </div>
+
+    </div>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById("box");
+            var divs = box.getElementsByTagName("div");
+            var imgs = box.getElementsByTagName("img");
+
+            //得到屏幕宽度
+            var cw = document.documentElement.clientWidth;
+            // console.log(cw);
+            //得到每一行有多少个
+            var col = parseInt(cw / divs[0].offsetWidth);
+            console.log(col);
+
+            box.style.width = parseInt(cw / divs[0].offsetWidth) * divs[0].offsetWidth + "px";
+            box.style.margin = "0 auto ";
+
+            var arrHeight = [];
+            var newarr = [];
+            var miniindex = 0;
+            var miniheight = 0;
+            // console.log(divs[2].offsetHeight);
+
+            for(var i=0;i<divs.length;i++){
+                if(i<col){
+                    arrHeight[i] = divs[i].offsetHeight;
+                }
+                else {
+                    //求这个数组中的最小高度
+                    miniheight = _.min(arrHeight);
+                    miniindex = sor(arrHeight,miniheight);
+                    divs[i].style.position = "absolute";
+                    divs[i].style.left = miniindex*divs[i].offsetWidth + "px";
+                    divs[i].style.top = miniheight + "px";   
+                    console.log(arrHeight);
+                    arrHeight[miniindex] = miniheight + divs[i].offsetHeight;
+                    
+                }
+            }
+
+        };
+        function sor(arr,val){
+            for (var i=0;i<arr.length;i++){
+                if(arr[i] == val ){
+                    return i;
+                }
+            }
+        };
+        
+    </script>
+
+</body>
+</html>

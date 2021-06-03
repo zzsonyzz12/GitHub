@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <link rel="stylesheet" href="../less/mypage.css">
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(82, 77, 77, 0.76);
+            /* position: relative; */
+
+        }
+
+        #box {
+            width: 100%;
+            height: 100%;
+            min-width: 1200px;
+            overflow-x: hidden;
+            overflow-Y: hidden;
+            /* position: relative; */
+            /* overflow: hidden; */
+        }
+
+        #box span {
+            /* background-image: url(../img/star.png); */
+            background: url(../img/star.png);
+            /* background-size: ; */
+            width: 30px;
+            height: 30px;
+            background-size: 100% 100%;
+            position: absolute;
+            transition: all 1s;
+            /* animation: flash 2s infinite alternate; */
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #big {
+            width: 90%;
+            /* height: auto; */
+            margin: 0 auto;
+            position: relative;
+
+            background-color: rgba(145, 155, 143, 0.795);
+        }
+
+
+        #bottom {
+            width: 100%;
+
+        }
+
+        #bottom #ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            align-content: space-around;
+        }
+
+        #bottom li {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            text-align: center;
+            /* line-height: 200px; */
+            background-color: orange;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        #bottom ul li a {
+            display: flex;
+            height: 100%;
+            text-decoration: none;
+            color: wheat;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 30px;
+            align-items: center;
+            /* line-height: 28px; */
+
+        }
+
+        #bottom ul li a img {
+            width: 60%;
+            height: 50%;
+            display: none;
+        }
+
+        #bottom ul li a span {
+            width: 100%;
+        }
+
+        #tp {
+            width: 100%;
+            height: 80px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+            margin-bottom: 50px;
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #tp #ul {
+            display: flex;
+            width: 80%;
+            justify-content: space-between;
+        }
+
+        #tp #ul li {
+            display: flex;
+            /* width: 100px; */
+            height: 80px;
+            box-sizing: border-box;
+            /* background-color: rgb(224, 167, 23); */
+            /* text-align: center; */
+            justify-content: center;
+        }
+
+        #tp #ul .icoo {
+            background-image: url(../img/ldw/logo-177-42-019EFF-non-bold-j-249.png);
+            flex-shrink: 0;
+            background-repeat: no-repeat;
+            background-position: left center;
+            margin-left: 5px;
+            width: 123px;
+        }
+
+        #tp #ul li a {
+            text-decoration: none;
+            /* text-align: center; */
+            display: flex;
+            /* background-color:purple ; */
+            color: rgba(51, 51, 51, 0.9);
+            position: relative;
+        }
+
+        #tp #ul li a span {
+            /* text-align: center; */
+            /* font: optional; */
+            font-size: 16px;
+            line-height: 80px;
+            /* background-color: #fff; */
+        }
+
+        #tp #ul:last-child {
+            margin-right: 5px;
+            color: royalblue;
+            /* background-color:red ; */
+        }
+
+        #tp #ul li:nth-child(1) span {
+            color: royalblue;
+
+        }
+
+        #tp #ul li a i {
+            /* color: red; */
+            /* background-color: #bfa; */
+            font-size: 12px;
+            display: block;
+            margin-top: 65%;
+            margin-left: 5px;
+            transform: translateY(-15px);
+
+        }
+
+        #tp #right {
+            width: 20%;
+            height: 80px;
+            /* background-color: red; */
+            display: flex;
+            justify-content: space-around;
+            align-content: space-around;
+            align-items: center;
+        }
+
+        #tp #right li {
+            /* background-color: #bfa; */
+            float: left;
+            /* margin: 30px; */
+            /* margin-top: 40px ; */
+            /* transform: translateY(-50%); */
+            width: 50px;
+            /* font-size: 28px; */
+        }
+
+        #tp #right li a {
+            text-decoration: none;
+            /* font-style: italic; */
+            /* font-size: 28px; */
+            color: rgba(51, 51, 51, 0.9);
+        }
+
+        #tp #right li a span {
+            font-size: 16px;
+        }
+
+        #tp #right li a:hover span {
+            color: royalblue;
+        }
+
+        .lastr {
+            margin-left: -40px;
+        }
+
+        .rii {
+            font-size: 25px;
+            margin-left: 50px;
+            color: rgba(92, 83, 82, 0.733);
+        }
+
+        #big>#tp>#ul>li:hover>a>span,
+        #big #tp li:hover i {
+            color: rgb(1, 158, 255);
+            /* font-size: 40px; */
+        }
+
+        #big #tp #ul .icoo1 a span {
+            color: rgb(1, 158, 255);
+        }
+
+        .xiala {
+            position: absolute;
+            background-color: rgb(240, 240, 240);
+            top: 100px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
+            visibility: hidden;
+            opacity: 0;
+            transition: all linear 0.5s;
+            border-radius: 3px;
+            /* overflow: hidden; */
+        }
+
+        #tp #ul .xiala>span {
+            width: 0;
+            height: 0;
+            z-index: 9;
+            border: 10px solid rgb(46, 165, 16);
+            border-top: transparent;
+            border-right-color: transparent;
+            border-left-color: transparent;
+            transform: translateY(-100%);
+            border-bottom-color: rgba(240, 240, 240, 0.8);
+            border-bottom-left-radius: 5px;
+            position: absolute;
+            left: 20%;
+
+        }
+
+        #tp>#ul>li>.xiala ul li {
+            width: 140px;
+            height: 40px;
+            border-bottom: 1px solid #ccc;
+            /* background-color:peru; */
+            margin-top: 5px;
+            line-height: 40px;
+            text-align: center;
+
+        }
+
+        #tp>#ul>li>.xiala ul li a span {
+            line-height: 40px;
+            /* background-color: rgb(231, 218, 218); */
+        }
+
+        .test {
+            opacity: 0;
+            visibility: hidden;
+            top: 100px;
+        }
+
+        #big>#tp>#ul>li>.xiala span {
+            color: rgb(153, 153, 153);
+        }
+
+        #big>#tp>#ul .xiala a:hover span {
+            color: royalblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="box"><span></span></div> -->
+    <!-- 大盒子居中 -->
+    <div id="big">
+        <div id="tp">
+            <ul id="ul">
+                <li class="icoo"><a href="#"></a></li>
+                <li class="icoo1"><a href="#"><span class="iconfont">&#xe715;</span><span>首页</span></a></li>
+                <li id="kjzx">
+                    <a href="#"><span>科技资讯</span><i class="iconfont"> &#xe66a;</i></a>
+                    <div class="xiala">
+                        <span></span>
+                        <ul>
+                            <li><a href="#"><span>Windows</span></a></li>
+                            <li><a href="#"><span>Android</span></a></li>
+                            <li><a href="#"><span>行业资讯</span></a></li>
+                            <li><a href="#"><span>安全资讯</span></a></li>
+                            <li><a href="#"><span>手机数码</span></a></li>
+                            <li><a href="#"><span>云计算</span></a></li>
+                            <li><a href="#"><span>Apple</span></a></li>
+                            <li><a href="#"><span>Google</span></a></li>
+                            <li><a href="#"><span>Linux</span></a></li>
+                            <li><a href="#"><span>OTP专栏</span></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#"><span>软件资讯</span></a></li>
+                <li><a href="#"><span>Windows 10</span></a></li>
+                <li id="jsjc"><a href="#"><span>技术教程</span><i class="iconfont"> &#xe66a;</i></a>
+                    <div class="xiala">
+                        <span></span>
+                        <ul>
+                            <li><a href="#"><span>Windows</span></a></li>
+                            <li><a href="#"><span>Android</span></a></li>
+                            <li><a href="#"><span>行业资讯</span></a></li>
+                            <li><a href="#"><span>安全资讯</span></a></li>
+                            <li><a href="#"><span>手机数码</span></a></li>
+                            <li><a href="#"><span>云计算</span></a></li>
+                            <li><a href="#"><span>Apple</span></a></li>
+                            <li><a href="#"><span>Google</span></a></li>
+                            <li><a href="#"><span>Linux</span></a></li>
+                            <li><a href="#"><span>OTP专栏</span></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li id="rjgj"><a href="#"><span>软件工具</span><i class="iconfont"></i></a>
+                    <div class="xiala">
+                        <span></span>
+                        <ul>
+                            <li><a href="#"><span>Windows</span></a></li>
+                            <li><a href="#"><span>Android</span></a></li>
+                            <li><a href="#"><span>行业资讯</span></a></li>
+                            <li><a href="#"><span>安全资讯</span></a></li>
+                            <li><a href="#"><span>手机数码</span></a></li>
+                            <li><a href="#"><span>云计算</span></a></li>
+                            <li><a href="#"><span>Apple</span></a></li>
+                            <li><a href="#"><span>Google</span></a></li>
+                            <li><a href="#"><span>Linux</span></a></li>
+                            <li><a href="#"><span>OTP专栏</span></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#"><span>正版软件</span></a></li>
+                <li><a href="#"><span>网址导航</span></a></li>
+            </ul>
+            <ul id="right">
+                <li><a href="#"><i class="iconfont rii">&#xe6ca;</i></a></li>
+                <li><a href="#"><span>登陆</span></a></li>
+                <li class="lastr"><a href="#"><span>注册</span></a></li>
+            </ul>
+
+        </div>
+        <!-- <div id="bottom">
+            <ul id="ul">
+                <li>
+                    <a href="https://file.easondns.top" target="_blank"><img src="../img/img/png/file.png" />
+                        <span> File Station</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://mail.easondns.top" target="_blank"><img src="../img/img/png/mail.png" />
+                        <span>Mail Station</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://nas.easondns.top:9091" target="_blank"><img src="../img/img/png/transmssion.png" />
+                        <span> Transmission</span>
+                    </a>
+                <li>
+                    <a href="http://spc.easondns.top:8008" target="_blank"><img src="../img/img/png/wifi.png" />
+                        <span> SPC路由器</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://router.easondns.top" target="_blank"><img src="../img/img/png/ikuai.png" />
+                        <span>爱快路由器</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://k2p.easondns.top" target="_blank"><img src="../img/img/png/wifi.png" />
+                        <span> k2p路由器</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://pve.easondns.top" target="_blank"><img src="../img/img/png/pve.png" />
+                        <span>PVE</span>
+                    </a>
+                </li>
+
+
+
+            </ul>
+        </div> -->
+    </div>
+    <!-- 下一个大盒子
+ -->
+    <div id="lbt">
+        <div id="lbtleft">
+            <ul>
+                <li>
+                    <div class="tjbq"><span class="tjspan">1</span></div>
+                    <a href="#"><img src="../img/ldw/1.png" alt=""></a>
+                </li>
+                <li>
+                    <div class="tjbq"><span class="tjspan"></span></div>
+                    <a href="#"><img src="../img/ldw/2.png" alt=""></a>
+                </li>
+                <li>
+                    <div class="tjbq"><span class="tjspan">3</span></div>
+                    <a href="#"><img src="../img/ldw/3.jpg" alt=""></a>
+                </li>
+                <li>
+                    <div class="tjbq"><span class="tjspan">4</span></div>
+                    <a href="#"><img src="../img/ldw/70410-2.png" alt=""></a>
+                </li>
+            </ul>
+            <div id="lbtctl"> </div>
+            <div class="lbtctlctl">
+                <i class="iconfont lbtctl-left">&#xe6e8;</i>
+                <i class="iconfont lbtctl-right">&#xe6ed;</i>
+            </div>
+            <div class="tag">
+                <span class="tagb" id="kjzx">科技资讯</span>
+                <span class="tagb" id="rjzx">软件资讯</span>
+                <span class="tagb" id="hyzx">行业资讯</span>
+                <span class="tagb" id="alyp">阿里云盘</span>
+                <span class="tagb" id="bdwp">百度网盘</span>
+            </div>
+
+        </div>
+        <div id="lbtright"></div>
+    </div>
+    <script>
+        var lbt = document.getElementById("lbt");
+        var lbtleft = document.getElementById("lbtleft");
+        //所有的Li
+        var lbtlis = lbtleft.getElementsByTagName("li");
+        var ul = lbtleft.firstElementChild;
+        var lbtctl = document.getElementById("lbtctl");
+        //所有的span 即控制条
+        // var ctlspans = lbtctl.getElementsByTagName("span");
+        var ctls = lbtctl.getElementsByTagName("span");
+
+        var timer = null;
+        var inow = 0;
+        // var imgs = lbtleft.getElementsByTagName("img");
+
+
+
+        for (var i = 0; i < lbtlis.length; i++) { //动态创建 span 
+            var ctl = document.createElement("span");
+            lbtctl.appendChild(ctl);
+        }
+        for (var i = 0; i < ctls.length; i++) { // 给每一个span 添加 一个类名 span
+            ctls[i].classList.add("span");
+        }
+        for (var i = 0; i < lbtlis.length; i++) { //给span 控制条定位 
+            lbtlis[i].style.left = lbtleft.offsetWidth + "px";
+        };
+        ctls[inow].classList.add("current");
+        lbtlis[inow].style.left = 0;
+
+        //进入lbtleft 让两份个控制上一张下一张的图标显示 
+
+        var lbtctl_left = document.getElementsByClassName("lbtctl-left")[0];
+        var lbtctl_right = document.getElementsByClassName("lbtctl-right")[0];
+        var lbtctlctl = document.getElementsByClassName("lbtctlctl")[0];
+
+        lbtleft.onmouseover = function () {
+            // lbtctlctl.style.display = "block";
+            // lbtctlctl.style.opacity = "1";
+            lbtctl_left.style.opacity = 1;
+            lbtctl_right.style.opacity = 1;
+            lbtctl_left.style.left = 0;
+            lbtctl_right.style.right = 0;
+            clearInterval(timer);
+        };
+        lbtleft.onmouseout = function () {
+            lbtctl_left.style.opacity = 0;
+            lbtctl_right.style.opacity = 0;
+            lbtctl_left.style.left = -30 + "px";
+            lbtctl_right.style.right = -30 + "px";
+            timer = setInterval(times, 2000);
+        };
+
+        //监听上一张下一张
+        // 定义一个lbtleft盒子宽度 
+        var lbtW = lbtleft.offsetWidth;
+        //上一张
+        lbtctl_left.onclick = function () {
+            //让现在这张往左移
+            jxls(lbtlis[inow], {
+                "left": -lbtW
+            });
+            inow++;
+            if (inow >= ctls.length) {
+                inow = 0;
+            }
+            //下一张就位
+            lbtlis[inow].style.left = lbtW + "px";
+            jxls(lbtlis[inow], {
+                "left": 0
+            });
+            changeindex();
+        };
+        lbtctl_right.onclick = function () {
+            //让现在这一张往右移
+            jxls(lbtlis[inow], {
+                "left": lbtW
+            })
+            inow--;
+            if (inow < 0) {
+                inow = lbtlis.length - 1;
+            }
+            lbtlis[inow].style.left = -lbtW + "px";
+            jxls(lbtlis[inow], {
+                "left": 0
+            });
+            changeindex();
+        };
+
+
+        timer = setInterval(times, 2000);
+
+
+        //定义一个函数来改变inow
+        function changeindex() {
+            for (var i = 0; i < ctls.length; i++) {
+                ctls[i].classList.remove("current");
+            }
+            ctls[inow].classList.add("current");
+
+        };
+        //定义一个定时器函数
+        function times() {
+
+            jxls(lbtlis[inow], {
+                "left": -lbtW
+            });
+            inow++;
+            if (inow >= ctls.length) {
+                inow = 0;
+            }
+            //下一张就位
+            lbtlis[inow].style.left = lbtW + "px";
+            jxls(lbtlis[inow], {
+                "left": 0
+            });
+            changeindex();
+
+
+        };
+
+
+
+        //缓动动画函数 
+        function jxls(obj, json, fn) { //缓动动画函数
+            // console.log("------");
+
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var speed = 0;
+                var begin = 0;
+                var target = 0;
+                var flag = true;
+                for (var key in json) {
+                    begin = parseInt(window.getComputedStyle(obj)[key]);
+                    target = parseInt(json[key]);
+                    speed = (target - begin) * 0.6;
+                    speed = (target > begin) ? Math.ceil(speed) : Math.floor(speed);
+                    obj.style[key] = speed + begin + "px";
+                    if (begin !== target) {
+                        flag = false;
+                    };
+                };
+                if (flag) {
+                    clearInterval(obj.timer);
+                };
+                if (fn) {
+                    fn();
+                }
+            }, 200);
+        }
+    </script>
+
+    <script>
+        var kjzx = document.getElementById("kjzx");
+        var jsjc = document.getElementById("jsjc");
+        var rjgj = document.getElementById("rjgj");
+        var xialakj = kjzx.getElementsByClassName("xiala")[0];
+        var xialajs = jsjc.getElementsByClassName("xiala")[0];
+        var xialarj = rjgj.getElementsByClassName("xiala")[0];
+        // kjzx.onmouseover = function () {
+        //     xialakj.style.visibility = "visible";
+        //     xialakj.style.opacity = "1";
+        //     xialakj.style.top = kjzx.offsetHeight + "px";
+        // }
+        // kjzx.onmouseout = function () {
+        //     xialakj.removeAttribute("style");
+        //     xialakj.classList.add("test");
+        // };
+        kjzx.onmouseover = function () {
+            xiala(xialakj);
+        };
+        kjzx.onmouseout = function () {
+            xiala2(xialakj);
+        };
+        jsjc.onmouseover = function () {
+            xiala(xialajs);
+        };
+        jsjc.onmouseout = function () {
+            xiala2(xialajs);
+        };
+
+        function xiala(ele) {
+            ele.style.visibility = "visible";
+            ele.style.opacity = "1";
+            ele.style.top = kjzx.offsetHeight + "px";
+        };
+
+        function xiala2(ele) {
+            ele.removeAttribute("style");
+            ele.classList.add("test");
+        };
+    </script>
+    <script>
+        var tags = document.getElementsByClassName("tagb");
+        var tjbq = document.getElementsByClassName("tjbq");
+        console.log(tags[2]);
+
+        for (var i = 0; i < lbtlis.length; i++) {
+            var s = document.createElement("span");
+            s.innerHTML = "<a href='#'>简单</a>";
+            tjbq[i].appendChild(s)
+            tjbq[i].appendChild(s)
+            
+       
+        }
+    </script>
+</body>
+</html>

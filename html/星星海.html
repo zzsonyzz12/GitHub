@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        html,body {
+            background-color: black;
+            position: relative;
+            /* width: 100%;
+            height: 100%; */
+            /* overflow: hidden; */
+        }
+
+        #box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+      #box span {
+            /* background-image: url(../img/star.png); */
+            background: url(../img/star.png);
+            /* background-size: ; */
+            width: 30px;
+            height: 30px;
+            background-size: 100% 100%;
+            position: absolute;
+            transition: all 1s;
+            /* animation: flash 2s infinite alternate; */
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box"><span></span></div>
+
+    <script>
+        var box = document.getElementById("box");
+        for (var i = 0; i < 200; i++) {
+            var span = document.createElement("span");
+            box.append(span);
+            // console.log(this);  
+        }
+        var sps = box.children;
+        // console.log(sps);
+        for (var i = 0; i < sps.length; i++) {
+            var ch = parseInt(Math.random() * (innerHeight-20));
+            var cw = parseInt(Math.random() * (innerWidth-20));
+            if (ch > innerHeight) {
+                ch = innerHeight;
+            }
+            if (cw > innerWidth) {
+                cw = innerWidth;
+            }
+            sps[i].style.left = cw + "px";
+            sps[i].style.top = ch + "px";
+            var sc = parseInt(Math.random() * 3);
+            sps[i].style.transform = 'scale(' + sc + ')';
+            console.log(typeof sc);
+            var ss = Math.random() * 4;
+            // animation-delay
+            sps[i].style.animationDelay = ss + "s";
+            sps[i].onmousedown = function () {
+                var sr = parseInt(Math.random() * 360);
+                this.style.transform = 'rotate(' + 180 + 'deg' + ')' + 'scale(' + 8 + ',' + 8 + ')';
+                var timer = null;
+                setTimeout(() => {
+                    var sc = parseInt(Math.random() * 3);
+                    // sps[i].style.transform = 'scale(' + sc + ')';
+                    this.style.transform = 'rotate(' + 180 + 'deg' + ')' + 'scale(' + sc + ',' + sc + ')';
+                }, 2000);
+
+            };
+        }
+
+
+
+
+        animate__heartBeat
+    </script>
+</body>
+</html>

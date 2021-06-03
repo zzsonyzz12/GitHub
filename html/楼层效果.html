@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #dh {
+            position: fixed;
+            left: 50px;
+            top: 500px;
+            background-color: yellowgreen;
+            border: 1px solid rgb(95, 81, 81);
+        }
+
+        #dh li {
+            text-align: center;
+            border-bottom: 1px solid white;
+            color: rgb(65, 58, 58);
+            font-size: 50px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #dh li.current {
+            background-color: orange;
+            color: rgba(240, 231, 231, 0.753);
+        }
+
+        #lr {
+            width: 100%;
+            height: 100%;
+        }
+
+        #lr li {
+            width: 100%;
+            height: 100%;
+            background-color: orange;
+            text-align: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="dh">
+        <li class="current">第一层</li>
+        <li>第二层</li>
+        <li>第三层</li>
+        <li>第四层</li>
+        <li>第五层</li>
+    </ul>
+    <ul id="lr">
+        <li>第一层内容</li>
+        <li>第二层内容</li>
+        <li>第三层内容</li>
+        <li>第四层内容</li>
+        <li>第五层内容</li>
+    </ul>
+
+    <script>
+        window.onload = function () {
+            var dh = document.getElementById("dh");
+            var lr = document.getElementById("lr");
+            var dhs = dh.children;
+            var lrs = lr.children;
+
+            var sh = 0;
+            var ss = 0;
+            var yas = [
+                "red",
+                "blue", "yellow",
+                "greenyellow", "#bfa"
+            ]
+            var timer = null;
+            var sp = 0;
+            var begin = 0;
+            var bg = 0;
+            //这是设置每一层的颜色;
+            for (var i = 0; i < yas.length; i++) {
+                lrs[i].style.backgroundColor = yas[i];
+            }
+
+            for (var i = 0; i < dhs.length; i++) {
+                (function (i) {
+                    dhs[i].onclick = function () {
+
+                        for (var j = 0; j < dhs.length; j++) {
+                            dhs[j].className = "";
+                        }
+                        this.className = "current";
+                        sh = i * lrs[i].offsetHeight;
+                        // console.log("目标值 : " + sh);
+
+                        clearInterval(timer);
+                        timer = setInterval(function () {
+                            begin = document.documentElement.scrollTop;
+                            console.log("________________");
+
+                            console.log("begin 最开始的初始值 :" + begin);
+                            console.log("sh 最后必须到达的值 : " + sh);
+
+                            sp = (sh - begin) * 0.5;
+                            //  speed = (target > begin) ? Math.ceil(speed) : Math.floor(speed);
+                            //对步长进行判定,向上取整还是向下取整
+
+                            sp = (sh > begin) ? Math.ceil(sp) : Math.floor(sp);
+                            console.log("sp的值 : " + sp);
+                            begin = begin + sp;
+                            //如果步长为0时即清除定时器;
+                            if (sp == 0) {
+                                clearInterval(timer);
+                            }
+                            window.scrollTo(0, begin);
+
+
+                            console.log("begin最后的值 : " + begin);
+
+
+                        }, 30)
+
+                    };
+
+
+                })(i)
+
+            }
+
+
+var ll = 0;
+            window.onscroll = function(){
+                ss = document.documentElement.scrollTop;
+                console.log("流动的距离"+ss);
+                for(var i=0;i<dhs.length;i++){
+                   ll = lrs[i].offsetTop;
+                   if(ss>ll-lrs[i].offsetHeight/2){
+                       for(var j=0;j<lrs.length;j++){
+                           dhs[j].className = "";
+                       }
+                       dhs[i].className = "current";
+                   }
+                }
+
+                
+            };
+            
+
+
+
+
+
+
+
+        }
+    </script>
+</body>
+</html>

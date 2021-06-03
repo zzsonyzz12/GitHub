@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        #box {
+            width: 1000px;
+            margin: 100px auto;
+            background-color: #bfa;
+        }
+
+        .ul {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: purple;
+        }
+
+        .ul li {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            margin: 5px auto;
+            border: 2px slateblue solid;
+
+
+        }
+
+        .ul li a {
+            display: block;
+            /* background-color: #fff; */
+            text-align: center;
+            margin-top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul class="ul">
+            <li><a href="#"><img src="../img/img/png/png/mail.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/settings.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/business-summery.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/bin.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/camera.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/doc.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/msg.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/xl.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/mail.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/settings.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/business-summery.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/bin.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/camera.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/doc.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/msg.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/xl.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/mail.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/settings.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/business-summery.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/bin.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/camera.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/doc.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/msg.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/xl.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/mail.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/settings.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/business-summery.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/bin.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/camera.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/doc.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/msg.png" alt=""></a></li>
+            <li><a href="#"><img src="../img/img/png/png/xl.png" alt=""></a></li>
+        </ul>
+    </div>
+    <img src="../img/img/png/png/xl.png" alt="">
+    <img src="../img/img/png/png/xl.png" alt="">
+    <img src="../img/img/png/png/xl.png" alt="">
+    <script>
+        var box = document.getElementById("box");
+        var ul = document.getElementsByClassName("ul")[0];
+
+        var lis = ul.getElementsByTagName("li");
+        console.log(lis);
+        var imgs = ul.getElementsByTagName("img");
+        console.log(imgs);
+        var noww = 0;
+        var ww = 0;
+        var sb = 0;
+        var timer = null;
+        ww = window.innerWidth;
+        window.onresize = function (eve) {
+            timer = setTimeout(function () {
+                noww = window.innerWidth;
+                sb = noww / ww;
+                if (sb >= 1.5) {
+                    sb = 1.5;
+                }
+                if (sb <= 0.5) {
+                    sb = 0.5;
+                } // console.log(sb); 
+                for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].style.transition = "all 200";
+                    imgs[i].style.transform = "scale(" + sb + ")";
+
+                }
+            }, 200)
+        };
+        console.log(sb);
+    </script>
+</body>
+</html>

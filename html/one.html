@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <script src="../js/Underscore-min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <div id="box">
+        <img src="../img/1.jpg" alt="">
+    </div>
+    <script>
+    
+    window.onload = function(){
+                 var img = document.getElementsByTagName("img")[0];
+                 var box = document.getElementById("box");
+                 console.log(box);
+                 console.log(img);
+                 console.log(img.offsetWidth);
+
+                 console.log("打印盒子的可视高度: "+ box.offsetHeight);
+                 console.log("图片的可视高度: " + img.offsetHeight);
+                 // var ars = [1110,20,80,999,60,55,90];
+                 // var mi = _.min(ars);
+                 // console.log(mi);
+    };
+    
+
+
+
+    </script>
+</body>
+</html>

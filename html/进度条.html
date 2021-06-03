@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        #box {
+            width: 800px;
+            height: 40px;
+            background-color: rgb(58, 56, 61);
+            position: relative;
+            margin: 100px auto;
+            border-radius: 5px;
+            /* overflow: hidden; */
+            line-height: 40px;
+        }
+
+        #sm {
+            width: 20px;
+            height: 50px;
+            background-color: orangered;
+            position: absolute;
+            border-radius: 5px;
+            /* transform: translateY(-50%); */
+            cursor: move;
+        }
+
+        span {
+            font-size: 40px;
+            position: absolute;
+            margin-left: 50px;
+            /* text-align: center; */
+            /* line-height: 50px; */
+        }
+
+        #bg {
+            width: 0%;
+            height: 100%;
+            background-color: orangered;
+            position: absolute;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span>0%</span>
+        <div id="bg"> </div>
+        <div id="sm"></div>     
+    </div>
+
+    <script>
+        var box = document.getElementById("box");
+        var sm = document.getElementById("sm");
+        var span = document.getElementsByTagName("span")[0];
+        sm.style.top = -(sm.offsetHeight / 2 - box.offsetHeight / 2) + "px";
+        var bg = document.getElementById("bg");
+        // bg.style.left = -bg.offsetWidth + "px";
+
+
+        span.style.left = box.offsetWidth + "px";
+
+        box.onmousemove = function (e) {
+            var cx = (e.clientX - box.offsetLeft) - sm.offsetWidth / 2;
+            var cy = (e.clientY - box.offsetHeight) - sm.offsetHeight / 2;
+            // console.log(cx,cy);
+
+            if (cx < 0) {
+                cx = 0;
+            } else if (cx > box.offsetWidth - sm.offsetWidth) {
+                cx = box.offsetWidth - sm.offsetWidth;
+            }
+            sm.style.left = cx + "px";
+            // var per = cx/box.offsetWidth*100;
+            var per = cx / (box.offsetWidth - sm.offsetWidth) * 100;
+            // console.log(per);
+            span.innerText = parseInt(per) + "%";
+            bg.style.width = per + "%"
+
+        };
+    </script>
+</body>
+</html>

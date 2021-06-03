@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <!-- <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js'></script>  -->
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        button {
+            width: 100px;
+            height: 50px;
+            background-color: orange;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- 
+<script>
+let jxls = new Promise((resolve,reject) =>{
+    reject("EEEEE")
+});
+jxls.then((result) => {
+    console.log(111111111111111);
+    console.log(result);
+    
+       
+}).catch((err) => {
+    console.log(222222222222222);
+    console.log(err);
+    
+});
+console.log(jxls);
+
+
+
+</script>
+<script > // promise 封装ajax
+    function senAjax(url){
+        return new Promise((resolve,reject)=>{
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET",url);
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                //readyState 4 是表示 所有都发送成功
+                if(xhr.readyState === 4 ){
+                    if(xhr.status>=200 && xhr.status<300){
+                        //xhr.response 响应体
+                        resolve(xhr.response);
+                    }else {
+                        reject(xhr.status);
+                    }
+                }
+            }
+            
+        })
+    }
+    
+</script>
+<SCript> // API
+
+    let p = new Promise((resolve,reject) =>{
+        // 这个data就保存在 PromiseReslut中
+        resolve("data");
+    })
+    p.then((value)=>{
+            // 这里的value 就是 PromiseReslut 中保存的值 
+            console.log(value); 
+            
+        }, reason => {
+            console.log(reason);
+            
+        })
+
+
+</SCript> -->
+    <!--<script>
+    let p = new Promise((resolve, reject)=>{
+        reject("catch的用法");
+    });
+    p.catch(reason =>{
+        //catch 是失败时调用函数 它会去捕获失败事件.然后回调这个函数
+        console.log(reason);        
+    })
+
+</script> -->
+
+
+    <h2>基本使用
+    </h2><br>
+    <button>发送GET请求</button>
+    <button>发送POST请求</button>
+    <button>发送PUT请求</button>
+    <button>发送delete请求</button>
+
+
+    <script>
+        $("button").eq(0).click(function () {
+
+            axios({
+                method: 'GET',
+                url: "http://localhost:3000/posts/2",
+
+            }).then((result) => {
+                console.log(result);
+
+            }).catch((err) => {
+                console.log(err);
+
+            });
+
+
+        });
+        $("button").eq(1).click(() => {
+            axios({
+                method: 'POST',
+                url: "http://localhost:3000/posts",
+                data: {
+                    title: "this is my easondns.top",
+                    author: "xiaobai",
+                    id: 10
+                }
+            }).then(value => {
+                console.log(value);
+            })
+        })
+        $("button").eq(2).click(() => {
+            axios({
+                method: 'PUT',
+                //PUT是要指定到哪个文章ID
+                url: "http://localhost:3000/posts/3",
+                data: {
+                    title: "this is my easondns.top",
+                    author: "eassondns",
+                    // id : 10
+                }
+            }).then(value => {
+                console.log(value);
+            })
+        })
+           $("button").eq(3).click(() => {
+           axios({
+           method: 'delete',
+           url: "http://localhost:3000/posts/4",
+           }).then(value => {
+           console.log(value);
+           })
+           })
+    </script>
+
+
+</body>
+</html>

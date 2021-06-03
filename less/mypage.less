@@ -1,0 +1,130 @@
+body {
+    width: 100%;
+
+
+    #lbt {
+        width: 1200px;
+        background-color: rgba(0, 0, 0, 0.3);
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+
+        #lbtleft {
+            width: 49%;
+            height: 400px;
+            background-color: purple;
+            // overflow: hidden;
+            position: relative;
+            // z-index: 9;
+        
+
+            ul {
+                width: 200%;
+                height: 100%;
+
+                li {
+                    position: absolute;
+                    width: 100%;
+                    height: 400px;
+
+                    .tjbq {
+                        position: absolute;
+                        // width: 60px;
+                        // height: 20px;
+                        top: 10px;
+                        left: 10px;
+                        .tjspan{
+                            width: 60px;
+                            height: 20px;
+                            margin-left: 5px;
+                            background-color: rgba(0, 0, 0, 0.3);
+
+                        }
+                    }
+
+                    a {
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            color: orange;
+                            font-size: 100px;
+                        }
+                    }
+                }
+            }
+
+            #lbtctl {
+                position: absolute;
+
+                right: 10px;
+                top: 10px;
+               
+                .span {
+                    float: left;
+                    width: 50px;
+                    height: 10px;
+                    background-color: rgba(106, 142, 35, 0.795);
+                    margin-left: 5px;
+                    cursor: pointer;
+                }
+
+                .current {
+                    background-color: orange;
+                }
+            }
+
+            .lbtctlctl {
+
+                .lbtctl-left {
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    // background-color:orangered ;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 40px;
+                    color: white;
+                    cursor: pointer;
+                    left: -30px;
+                    opacity: 0;
+                    transition: all linear 0.5s;
+                }
+
+                .lbtctl-right {
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    // background-color:orangered ;
+                    top: 50%;
+                    right: 0px;
+                    transform: translateY(-50%);
+                    color: white;
+                    font-size: 40px;
+                    cursor: pointer;
+                    right: -30px;
+                    opacity: 0;
+                    transition: all linear 0.5s;
+                }
+            }
+
+            .tag {
+                position: absolute;
+                display: none;
+                .tagb {
+                    // width: 60px;
+                    // height: 20px;
+                    // background-color: rgba(0, 0, 0, 0.3);
+
+
+                }
+            }
+        }
+
+        #lbtright {
+            width: 49%;
+            height: 400px;
+            // background-color:orange ;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "commentTranslate.targetLanguage": "zh-CN",
+    "emmet.excludeLanguages": [
+
+        "markdown"
+    ],
+    "emmet.triggerExpansionOnTab": true,
+    "launch": {
+
+        "configurations": [],
+        "compounds": []
+    },
+    "emmet.preferences": {
+        
+    
+    },
+    "emmet.syntaxProfiles": {
+    },
+    "editor.linkedEditing": true
+}

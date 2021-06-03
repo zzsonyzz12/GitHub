@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+            margin: 10px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lb {
+            width: 200%;
+            height: 100%;
+            /* background-color: rgb(19, 18, 18); */
+            position: relative;
+        }
+
+        .tp {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            overflow: hidden;
+            left: 200px;
+        }
+
+        .tp1 {
+            background-color: red;
+
+        }
+
+        .tp2 {
+            background-color: yellowgreen;
+        }
+
+        .tp3 {
+            background-color: royalblue;
+        }
+
+        .ss {
+            font-size: 100px;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        .current {
+            left: 0;
+        }
+
+        .bo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .bo button {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .cts {
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+            float: left;
+            margin-left: 20px;
+        }
+
+        .te {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="lb">
+            <div class="tp tp1 current">
+                <div class="ss">1</div>
+            </div>
+            <div class="tp tp2">
+                <div class="ss">2</div>
+            </div>
+            <div class="tp tp3">
+                <div class="ss">3</div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="bo">
+        <button id="prev">上一张</button>
+        <button id="next">下一张</button>
+    </div>
+
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+        var lb = document.getElementsByClassName("lb")[0];
+        var tps = document.getElementsByClassName("tp");
+
+        var bo = document.getElementsByClassName("bo")[0];
+        var cts = bo.getElementsByTagName("span");
+
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+
+        var inow = 0;
+        var timer = null;
+        //创建span
+        for (var i = 0; i < tps.length; i++) {
+            var s = window.document.createElement("span");
+            console.log(s);
+            bo.append(s);
+
+        }
+        for (var i = 0; i < cts.length; i++) {
+            cts[i].classList.add("cts");
+        }
+        cts[0].classList.add("te");
+        //点击上一张
+        prev.onclick = function () {
+            // clearInterval(timer);
+            jxls(tps[inow], {
+                "left": -200
+            });
+            inow++;
+            if (inow >= tps.length) {
+                inow = 0;
+            }
+            tps[inow].style.left = 200 + "px";
+            jxls(tps[inow], {
+                "left": 0
+            });
+            changeindex();
+
+        };
+        next.onclick = function () {
+            // clearInterval(timer);
+            jxls(tps[inow], {
+                "left": 200
+            });
+            inow--;
+            if (inow < 0) {
+                inow = tps.length - 1;
+            }
+            tps[inow].style.left = -200 + "px";
+            jxls(tps[inow], {
+                "left": 0
+            });
+            changeindex();
+        };
+        for (var k = 0; k < cts.length; k++) {
+            cts[k].index = k;
+            cts[k].onmouseover = function () {
+                //现在的索引是 inow
+                //进入的索引 是index
+                // console.log("现在 INOW的值 ::   " + inow);
+                // console.log("进入 index的值  :: " + this.index);
+
+                if (inow < this.index) {
+                    jxls(tps[inow], {
+                        "left": -200
+                    });
+                    inow++;
+                    if (inow >= tps.length) {
+                        inow = 0;
+                    }
+                    tps[inow].style.left = 200 + "px";
+                    jxls(tps[inow], {
+                        "left": 0
+                    });
+                    changeindex();
+                } else if (inow > this.index) {
+                    jxls(tps[inow], {
+                        "left": 200
+                    });
+                    inow--;
+                    if (inow < 0) {
+                        inow = tps.length - 1;
+                    }
+                    tps[inow].style.left = -200 + "px";
+                    jxls(tps[inow], {
+                        "left": 0
+                    });
+                    changeindex();
+                }
+
+            };
+
+        }
+
+        timer = setInterval(autoplay, 2000);
+
+        for (var i = 0; i < tps.length; i++) {
+            tps[i].onmouseover = function () {
+
+                clearInterval(timer);
+
+            };
+
+        }
+        for (var i = 0; i < tps.length; i++) {
+            tps[i].onmouseout = function () {
+                timer = setInterval(autoplay, 2000);
+            };
+
+        }
+
+        function autoplay() {
+            jxls(tps[inow], {
+                "left": -200
+            });
+            inow++;
+            if (inow >= tps.length) {
+                inow = 0;
+            }
+            tps[inow].style.left = 200 + "px";
+            jxls(tps[inow], {
+                "left": 0
+            });
+            changeindex();
+        };
+
+
+        function changeindex() {
+            for (var i = 0; i < tps.length; i++) {
+                cts[i].classList.remove("te");
+            }
+            cts[inow].classList.add("te");
+        };
+
+
+        function jxls(obj, json) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var speed = 0;
+                var begin = 0;
+                var target = 0;
+                var flag = true;
+                for (var key in json) {
+                    begin = parseInt(window.getComputedStyle(obj)[key]);
+                    target = parseInt(json[key]);
+                    speed = (target - begin) * 0.2;
+                    speed = (target > begin) ? Math.ceil(speed) : Math.floor(speed);
+                    obj.style[key] = speed + begin + "px";
+                    if (begin !== target) {
+                        flag = false;
+                    }
+                }
+                if (flag) {
+                    clearInterval(obj.timer);
+                }
+
+            }, 20)
+        };
+    </script>
+</body>
+</html>

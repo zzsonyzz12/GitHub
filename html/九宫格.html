@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyPage</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fontali/iconfont.css">
+    <style>
+        .c {
+            width: 900px;
+            background-color: #bfa;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .aa {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="b">
+        <button id="b3">3个</button>
+        <button id="b5">5个</button>
+        <button id="b6">6个</button>
+        <!-- <button id="b6">9个</button> -->
+    </div>
+    <div class="c">
+        <div class="a">
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+            <div class="aa"></div>
+        </div>
+    </div>
+    <script>
+        var b3 = document.getElementById("b3");
+        var b5 = document.getElementById("b5");
+        var b6 = document.getElementById("b6");
+        var a = document.getElementsByClassName("a")[0];
+        var aa = document.getElementsByClassName("aa");
+        var b = document.getElementsByClassName("b")[0];
+        console.log(b.children);
+
+        b3.onclick = function () {
+            var cols = 3;
+            var aaw = 200;
+            var aah = 200;
+            var aax = 10;
+            for (var i = 0; i < aa.length; i++) {
+                //   除得行号 取余得列号  因为余怎么都不能大过 被除数
+
+                var row = parseInt(i / cols);
+                var col = parseInt(i % cols);
+                aa[i].style.left = col * (aaw + aax) + "px";
+                aa[i].style.top = row * (aah + aax) + "px";
+            }
+
+        };
+    </script>
+</body>
+</html>
