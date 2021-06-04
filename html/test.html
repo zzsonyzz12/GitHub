@@ -12,7 +12,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <style>
         button {
-            width: 100px;
+            width: 120px;
             height: 50px;
             background-color: orange;
             border: none;
@@ -105,58 +105,94 @@ console.log(jxls);
 
     <script>
         $("button").eq(0).click(function () {
-
+            let url = "http://localhost:3000";
+            let cancel = null;
+            //判断上一次请求是否成功,如果是成功了cancel 的值会被 then 方法修改为 null 
+            if (cancel !== null) {
+                //进入判断 即表明正在等待,所以取消上一次请求
+                cancel();
+            }
             axios({
-                method: 'GET',
-                url: "http://localhost:3000/posts/2",
-
-            }).then((result) => {
-                console.log(result);
-
-            }).catch((err) => {
-                console.log(err);
+                //config 选项说明
+                // (1) url : 是用于请求的服务器地址
+                url: "/posts",
+                // (2) method  : 创建请求时使用的方法默认是 get
+                method: 'get',
+                // (3) baseURL : 自动加在 url 前面 ,除非 url 是绝对路径
+                baseURL: 'http://localhost:3000',
+                // (4) transformRequest : 向服务器发送前对数据进行修改处理 且必须返回一个字符串
+                // 只能用在 'PUT','POST','PATCH',这几个方法中
+                transformRequest: [
+                    (data) => {
+                        //对 data 进行处理
+                        return data;
+                    },
+                ],
+                // (5) transformResponse : 在传递给 'then / catch '方法前对 响应 的数据进行修改 也必须返回一个字符串
+                transformResponse: [
+                    (data) => {
+                        //对 data 进行处理 
+                        return data;
+                    }
+                ],
+                // (6) headers : 自定义请求头
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                // (7) params : 设置与请求一起发送的 URL 参数 
+                params: {
+                    //会表现为: 
+                    ID: 12345,
+                },
+                // (8) paramsSerializer :  是一个负责 `params` 序列化的函数
+                // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
+                paramsSerializer: function (params) {
+                    return Qs.stringify(params, {
+                        arrayFormat: 'brackets'
+                    })
+                },
+                // (9) data : 作为请求主体被发送的数据 适用于:'PUT','PATH','POST';
+                data: {
+                    firstName: 'xiaobai'
+                },
+                // (10) timeout : 指定请求超时的毫秒数( 0 表示无超时时间) 超过时间没有响应就中断
+                timeout: 1000,
+                // (11) withCredentials : 表示跨域请求时是否需要使用凭证 默认是 false
+                withCredentials: false,
+                // (12) auth : 表示使用 HTTP 基础验证,并提供凭据
+                //这将设置一个'Authorization' 头,覆盖掉现有的  headers 
+                auth: {
+                    username: 'xiaobai',
+                    password: '123456',
+                },
+                // (13) responseType : 表示服务器响应的数据类型 (arraybuffer/blob/document/json/text/strem) 默认是 json 
+                responseType: 'json',
+                // (14) xsrfCookieName : 是用作 xsrf token 的值的cookie的名称
+                xsrfCookieName: 'XSRF-TOKEN', //默认值
+                // (15) xsrfHeaderName : 是承载 xsrf token 的值的 HTTP 头的名称
+                xsrfHeaderName: 'X-XSRF-TOKEN', // 默认值
+                // (16) cancelToken : 用于取消请求  let cancel = null 定义一个全局变量;              
+                cancelToken: new CancelToken((c) => {
+                    //这个 C 是一个函数参数 赋值给全局变量 cancel 
+                    //在需要取消的地方调用 cancel(); 这个函数即可取消这个请求
+                    //常用 情况会在发送请求时检测上一次的请求状态,并取消上一次请求,重新发送
+                    cancel = c;
+                }),
+            }).then(result => {
+                cancel = null;
+            }).catch(response => {
 
             });
 
-
         });
-        $("button").eq(1).click(() => {
-            axios({
-                method: 'POST',
-                url: "http://localhost:3000/posts",
-                data: {
-                    title: "this is my easondns.top",
-                    author: "xiaobai",
-                    id: 10
-                }
-            }).then(value => {
-                console.log(value);
-            })
+
+        let axiosapi = aixos.create({
+            baseURL:'http://localhost:3000',
+            url: '/posts',
         })
-        $("button").eq(2).click(() => {
-            axios({
-                method: 'PUT',
-                //PUT是要指定到哪个文章ID
-                url: "http://localhost:3000/posts/3",
-                data: {
-                    title: "this is my easondns.top",
-                    author: "eassondns",
-                    // id : 10
-                }
-            }).then(value => {
-                console.log(value);
-            })
-        })
-           $("button").eq(3).click(() => {
-           axios({
-           method: 'delete',
-           url: "http://localhost:3000/posts/4",
-           }).then(value => {
-           console.log(value);
-           })
-           })
+        axiosapi();
     </script>
 
-
+    <!--  -->
 </body>
 </html>
